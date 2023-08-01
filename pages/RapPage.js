@@ -4,9 +4,9 @@ import useSWR from "swr";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-export default function PopCard({ name, location, image, bewerten, preis }) {
+export default function RapCard() {
   const router = useRouter();
-  const { data, isLoading } = useSWR("/api/popstars", fetcher);
+  const { data, isLoading } = useSWR("/api/rapstars", fetcher);
 
   if (isLoading) {
     return <h1>LOADING...</h1>;
@@ -19,23 +19,23 @@ export default function PopCard({ name, location, image, bewerten, preis }) {
     <>
       <button onClick={() => router.push("/")}>back</button>
       <div>
-        <h2>POP</h2>
+        <h2>RAP</h2>
       </div>
       <div>
         <ul>
-          {data.map((popstars) => (
-            <li key={popstars._id}>
+          {data.map((rapstars) => (
+            <li key={rapstars._id}>
               <Image
-                src={popstars.image}
+                src={rapstars.image}
                 width={"200"}
                 height={"100"}
-                alt="Pop-Artist"
+                alt="Rap-Artist"
               />
-              <h4>{popstars.name}</h4>
-              <p>{popstars.location}</p>
-              <p>{popstars.rating}</p>
+              <h4>{rapstars.name}</h4>
+              <p>{rapstars.location}</p>
+              <p>{rapstars.rating}</p>
               <p>
-                {popstars.price} {popstars.currency}
+                {rapstars.price} {rapstars.currency}
               </p>
             </li>
           ))}

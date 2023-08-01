@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
-const showPopSchema = new Schema({
+const showPopStars = new Schema({
   name: { type: String },
   location: { type: String },
   image: { type: String },
@@ -12,6 +12,6 @@ const showPopSchema = new Schema({
 });
 
 const Popstar =
-  mongoose.models.Popstar || mongoose.model("Popstar", showPopSchema);
+  mongoose.models.Popstar || mongoose.model("Popstar", showPopStars);
 
 export default Popstar;

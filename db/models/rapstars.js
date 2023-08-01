@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
-const showRapSchema = new Schema({
+const showRapStars = new Schema({
   name: { type: String },
   location: { type: String },
   image: { type: String },
@@ -12,6 +12,6 @@ const showRapSchema = new Schema({
 });
 
 const Rapstar =
-  mongoose.models.Rapstar || mongoose.model("Rapstar", showRapSchema);
+  mongoose.models.Rapstar || mongoose.model("Rapstar", showRapStars);
 
 export default Rapstar;

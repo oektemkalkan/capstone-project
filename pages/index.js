@@ -1,14 +1,11 @@
 import Head from "next/head";
 import styled from "styled-components";
 import { Inter } from "next/font/google";
-import { useRouter } from "next/router";
-import useSWR from "swr";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home({ name, location, image, bewerten, preis }) {
-  const router = useRouter();
-
+export default function Home() {
   return (
     <>
       <Head>
@@ -20,18 +17,26 @@ export default function Home({ name, location, image, bewerten, preis }) {
       <main className={inter.className}>
         <Heading>Melodic Fever</Heading>
       </main>
-      <p>
+      <P>
         the wine that fills <br /> the cup of <br /> silence 🥂
-      </p>
-      <nav>
-        <button onClick={() => router.push("/RapCard")}> RAP </button>
+      </P>
+      <Nav>
+        <Link href={"/RapPage"}> RAP </Link>
         <br />
-        <button onClick={() => router.push("/PopCard")}> POP </button>
-      </nav>
+        <Link href={"/PopPage"}> POP </Link>
+      </Nav>
     </>
   );
 }
 
 const Heading = styled.h1`
+  text-align: center;
+`;
+
+const Nav = styled.nav`
+  text-align: center;
+`;
+
+const P = styled.p`
   text-align: center;
 `;
