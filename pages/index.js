@@ -15,7 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={inter.className}>
-        <Heading>Melodic Fever</Heading>
+        <StyledHOne>Melodic Fever</StyledHOne>
       </main>
       <P>
         the wine that fills <br /> the cup of <br /> silence 🥂
@@ -29,7 +29,7 @@ export default function Home() {
   );
 }
 
-const Heading = styled.h1`
+const StyledHOne = styled.h1`
   text-align: center;
 `;
 

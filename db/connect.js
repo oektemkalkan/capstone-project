@@ -20,28 +20,28 @@ if (!cached) {
 }
 
 async function dbConnect() {
-  if (cached.conn) {
-    return cached.conn;
+  if (cached.connect) {
+    return cached.connect;
   }
 
   if (!cached.promise) {
-    const opts = {
+    const options = {
       bufferCommands: false,
     };
 
-    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
+    cached.promise = mongoose.connect(MONGODB_URI, options).then((mongoose) => {
       return mongoose;
     });
   }
 
   try {
-    cached.conn = await cached.promise;
+    cached.connect = await cached.promise;
   } catch (error) {
     cached.promise = null;
     throw error;
   }
 
-  return cached.conn;
+  return cached.connect;
 }
 
 export default dbConnect;
