@@ -17,6 +17,9 @@ export default function Home() {
       <main className={inter.className}>
         <StyledHOne>Melodic Fever</StyledHOne>
       </main>
+      <Div>
+        <Link href={"/shoppingCart"}>SHOPPING CART</Link>
+      </Div>
       <P>
         the wine that fills <br /> the cup of <br /> silence 🥂
       </P>
@@ -39,4 +42,8 @@ const Nav = styled.nav`
 
 const P = styled.p`
   text-align: center;
+`;
+
+const Div = styled.div`
+  text-align: right;
 `;

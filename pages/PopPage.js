@@ -1,10 +1,12 @@
+import styled from "styled-components";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import useSWR from "swr";
+import Link from "next/link";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-export default function PopCard() {
+export default function PopPage() {
   const router = useRouter();
   const { data, isLoading } = useSWR("/api/popstars", fetcher);
 
@@ -18,25 +20,30 @@ export default function PopCard() {
   return (
     <>
       <button onClick={() => router.push("/")}>back</button>
+      <Div>
+        <Link href={"/shoppingCart"}>SHOPPING CART</Link>
+      </Div>
       <div>
         <h2>POP</h2>
       </div>
+      <hr />
       <div>
         <ul>
           {data.map((popstars) => (
             <li key={popstars._id}>
               <Image
                 src={popstars.image}
-                width={"200"}
-                height={"100"}
+                width={"280"}
+                height={"150"}
                 alt="Pop-Artist"
               />
-              <h4>{popstars.name}</h4>
-              <p>{popstars.location}</p>
               <p>{popstars.rating}</p>
+              <h4>{popstars.name}</h4>
+
               <p>
-                {popstars.price} {popstars.currency}
+                {popstars.currency} {popstars.price}
               </p>
+              <Link href={`/popDetails/${popstars._id}`}>Find Tickets</Link>
             </li>
           ))}
         </ul>
@@ -44,3 +51,7 @@ export default function PopCard() {
     </>
   );
 }
+
+const Div = styled.div`
+  text-align: right;
+`;

@@ -1,0 +1,86 @@
+import styled from "styled-components";
+import useSWR from "swr";
+import { useRouter } from "next/router";
+import Image from "next/image";
+import Link from "next/link";
+
+const fetcher = (url) => fetch(url).then((res) => res.json());
+
+export default function PopDetails() {
+  const router = useRouter();
+  const { id } = router.query;
+
+  const { data, error } = useSWR(`/api/popstars/${id}`, fetcher);
+
+  if (error) {
+    return <h1>Nothing there..</h1>;
+  }
+
+  if (!data) {
+    return <h1>LOADING...</h1>;
+  }
+
+  async function handleAddTicket(event) {
+    event.preventDefault();
+
+    const ticketData = {
+      image: data.image,
+      rating: data.rating,
+      name: data.name,
+      location: data.location,
+      date: data.date,
+      price: data.price,
+      currency: data.currency,
+    };
+
+    let cartTickets = JSON.parse(localStorage.getItem("cartTicket"));
+    if (!Array.isArray(cartTickets)) {
+      cartTickets = [];
+    }
+
+    const existingTicket = cartTickets.find(
+      (ticket) => ticket.name === ticketData.name
+    );
+    if (existingTicket) {
+      console.log(`A ticket from '${data.name}' is already in the cart.`);
+      return;
+    }
+
+    cartTickets.push(ticketData);
+
+    localStorage.setItem("cartTicket", JSON.stringify(cartTickets));
+  }
+
+  return (
+    <>
+      <button onClick={() => router.push("/PopPage")}>back</button>
+      <Div>
+        <Link href={"/shoppingCart"}>SHOPPING CART</Link>
+      </Div>
+      <article>
+        <Image
+          src={data.image}
+          priority="high"
+          alt="Pop Artist"
+          width={"280"}
+          height={"150"}
+        />
+        <p>{data.rating}</p>
+        <h4>{data.name}</h4>
+
+        <div>
+          <p>{data.location}</p>
+          <p>{data.date}</p>
+
+          <button onClick={handleAddTicket}>
+            {data.price} {data.currency}
+          </button>
+        </div>
+      </article>
+    </>
+  );
+}
+
+const Div = styled.div`
+  text-align: right;
+`;

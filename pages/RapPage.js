@@ -1,10 +1,12 @@
+import styled from "styled-components";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import useSWR from "swr";
+import Link from "next/link";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-export default function RapCard() {
+export default function RapPage() {
   const router = useRouter();
   const { data, isLoading } = useSWR("/api/rapstars", fetcher);
 
@@ -15,28 +17,36 @@ export default function RapCard() {
   if (!data) {
     return <h1> SORRY, no concerts for you! 🥀</h1>;
   }
+  const handleRapStarClick = (id) => {
+    router.push(`/rap/${id}`);
+  };
   return (
     <>
       <button onClick={() => router.push("/")}>back</button>
+      <Div>
+        <Link href={"/shoppingCart"}>SHOPPING CART</Link>
+      </Div>
       <div>
         <h2>RAP</h2>
       </div>
+      <hr />
       <div>
         <ul>
           {data.map((rapstars) => (
             <li key={rapstars._id}>
               <Image
                 src={rapstars.image}
-                width={"200"}
-                height={"100"}
+                width={"280"}
+                height={"150"}
                 alt="Rap-Artist"
               />
-              <h4>{rapstars.name}</h4>
-              <p>{rapstars.location}</p>
               <p>{rapstars.rating}</p>
+              <h4>{rapstars.name}</h4>
+
               <p>
-                {rapstars.price} {rapstars.currency}
+                {rapstars.currency} {rapstars.price}
               </p>
+              <Link href={`/rapDetails/${rapstars._id}`}>Find Tickets</Link>
             </li>
           ))}
         </ul>
@@ -44,3 +54,7 @@ export default function RapCard() {
     </>
   );
 }
+
+const Div = styled.div`
+  text-align: right;
+`;
