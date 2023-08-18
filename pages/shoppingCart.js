@@ -39,7 +39,7 @@ export default function ShoppingCart({ ticket }) {
       <h2>Shopping Cart Page</h2>
       <button onClick={goBack}>back</button>
 
-      {cartTickets && cartTickets.length > 0 ? (
+      {cartTickets.length > 0 ? (
         <>
           <ul>
             {cartTickets.map((ticket, id) => (
@@ -69,19 +69,19 @@ export default function ShoppingCart({ ticket }) {
       )}
 
       {showPopup && (
-        <Div>
-          <P>ordered!</P>
-        </Div>
+        <StyledDiv>
+          <StyledP>ordered!</StyledP>
+        </StyledDiv>
       )}
     </>
   );
 }
 
-const P = styled.p`
+const StyledP = styled.p`
   text-align: center;
 `;
 
-const Div = styled.div`
-  margin: 0rem 8rem 0rem 8rem;
+const StyledDiv = styled.div`
+  margin-inline: 8rem;
   background-color: lightBlue;
 `;
