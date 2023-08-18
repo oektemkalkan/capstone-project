@@ -17,9 +17,7 @@ export default function RapPage() {
   if (!data) {
     return <h1> SORRY, no concerts for you! 🥀</h1>;
   }
-  const handleRapStarClick = (id) => {
-    router.push(`/rap/${id}`);
-  };
+
   return (
     <>
       <button onClick={() => router.push("/")}>back</button>
