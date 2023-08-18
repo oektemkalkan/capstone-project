@@ -17,6 +17,12 @@ export default function ShoppingCart({ ticket }) {
     }
   }, []);
 
+  const handleDeleteTicket = (id) => {
+    const updatedCartTickets = cartTickets.filter((_, index) => index !== id);
+    setCartTickets(updatedCartTickets);
+    localStorage.setItem("cartTicket", JSON.stringify(updatedCartTickets));
+  };
+
   return (
     <>
       <h2>Shopping Cart Page</h2>
@@ -40,6 +46,7 @@ export default function ShoppingCart({ ticket }) {
               <p>
                 {ticket.price} {ticket.currency}
               </p>
+              <button onClick={() => handleDeleteTicket(id)}>DELETE</button>
             </li>
           ))}
         </ul>
