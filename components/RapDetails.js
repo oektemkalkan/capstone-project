@@ -3,7 +3,7 @@ import useSWR from "swr";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import useLocalStorageState from "use-local-storage-state";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -20,19 +20,6 @@ export default function RapDetails() {
 
   if (!data) {
     return <h1>LOADING...</h1>;
-  }
-
-  function useLocalStorageState(key, initialValue) {
-    const [state, setState] = useState(() => {
-      const storedValue = localStorage.getItem(key);
-      return storedValue ? JSON.parse(storedValue) : initialValue;
-    });
-
-    useEffect(() => {
-      localStorage.setItem(key, JSON.stringify(state));
-    }, [key, state]);
-
-    return [state, setState];
   }
 
   async function handleAddTicket(event) {

@@ -69,19 +69,19 @@ export default function ShoppingCart({ ticket }) {
       )}
 
       {showPopup && (
-        <StyledDiv>
-          <StyledP>ordered!</StyledP>
-        </StyledDiv>
+        <StyledDivPopUp>
+          <StyledMessage>ordered!</StyledMessage>
+        </StyledDivPopUp>
       )}
     </>
   );
 }
 
-const StyledP = styled.p`
+const StyledMessage = styled.p`
   text-align: center;
 `;
 
-const StyledDiv = styled.div`
+const StyledDivPopUp = styled.div`
   margin-inline: 8rem;
   background-color: lightBlue;
 `;
