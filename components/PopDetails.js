@@ -3,6 +3,7 @@ import useSWR from "swr";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -11,6 +12,7 @@ export default function PopDetails() {
   const { id } = router.query;
 
   const { data, error } = useSWR(`/api/popstars/${id}`, fetcher);
+  const [cartTickets, setCartTickets] = useLocalStorageState("cartTicket", []);
 
   if (error) {
     return <h1>Nothing there..</h1>;
@@ -18,6 +20,19 @@ export default function PopDetails() {
 
   if (!data) {
     return <h1>LOADING...</h1>;
+  }
+
+  function useLocalStorageState(key, initialValue) {
+    const [state, setState] = useState(() => {
+      const storedValue = localStorage.getItem(key);
+      return storedValue ? JSON.parse(storedValue) : initialValue;
+    });
+
+    useEffect(() => {
+      localStorage.setItem(key, JSON.stringify(state));
+    }, [key, state]);
+
+    return [state, setState];
   }
 
   async function handleAddTicket(event) {
@@ -33,11 +48,6 @@ export default function PopDetails() {
       currency: data.currency,
     };
 
-    let cartTickets = JSON.parse(localStorage.getItem("cartTicket"));
-    if (!Array.isArray(cartTickets)) {
-      cartTickets = [];
-    }
-
     const existingTicket = cartTickets.find(
       (ticket) => ticket.name === ticketData.name
     );
@@ -46,9 +56,7 @@ export default function PopDetails() {
       return;
     }
 
-    cartTickets.push(ticketData);
-
-    localStorage.setItem("cartTicket", JSON.stringify(cartTickets));
+    setCartTickets([...cartTickets, ticketData]);
   }
 
   return (
