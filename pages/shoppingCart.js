@@ -1,34 +1,28 @@
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import useLocalStorageState from "use-local-storage-state";
 import Image from "next/image";
 
 export default function ShoppingCart({ ticket }) {
   const router = useRouter();
-  const [cartTickets, setCartTickets] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
+  const [cartTickets, setCartTickets] = useLocalStorageState("cartTicket", []);
 
   const goBack = () => {
     router.back();
   };
 
-  useEffect(() => {
-    const storedCartTickets = JSON.parse(localStorage.getItem("cartTicket"));
-    if (storedCartTickets && storedCartTickets.length > 0) {
-      setCartTickets(storedCartTickets);
-    }
-  }, []);
-
-  const handleDeleteTicket = (id) => {
-    const updatedCartTickets = cartTickets.filter((_, index) => index !== id);
+  const handleDeleteTicket = (ticketToDelete) => {
+    const updatedCartTickets = cartTickets.filter(
+      (ticket) => ticket !== ticketToDelete
+    );
     setCartTickets(updatedCartTickets);
-    localStorage.setItem("cartTicket", JSON.stringify(updatedCartTickets));
   };
 
   const handleBuyTickets = () => {
     setShowPopup(true);
     setCartTickets([]);
-    localStorage.removeItem("cartTicket");
     setTimeout(() => {
       setShowPopup(false);
     }, 1800);
@@ -39,11 +33,11 @@ export default function ShoppingCart({ ticket }) {
       <h2>Shopping Cart Page</h2>
       <button onClick={goBack}>back</button>
 
-      {cartTickets.length > 0 ? (
+      {cartTickets && cartTickets.length > 0 ? (
         <>
           <ul>
-            {cartTickets.map((ticket, id) => (
-              <li key={id}>
+            {cartTickets.map((ticket) => (
+              <li key={ticket.id}>
                 <Image
                   src={ticket.image}
                   alt="Ticket"
@@ -58,7 +52,9 @@ export default function ShoppingCart({ ticket }) {
                 <p>
                   {ticket.price} {ticket.currency}
                 </p>
-                <button onClick={() => handleDeleteTicket(id)}>DELETE</button>
+                <button onClick={() => handleDeleteTicket(ticket)}>
+                  DELETE
+                </button>
               </li>
             ))}
           </ul>

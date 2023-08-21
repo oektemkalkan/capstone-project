@@ -25,7 +25,12 @@ export default function RapDetails() {
   async function handleAddTicket(event) {
     event.preventDefault();
 
+    const id = () => {
+      return Math.floor(Math.random() * 999).toString();
+    };
+
     const ticketData = {
+      id: id(),
       image: data.image,
       rating: data.rating,
       name: data.name,
@@ -34,6 +39,11 @@ export default function RapDetails() {
       price: data.price,
       currency: data.currency,
     };
+
+    if (!cartTickets) {
+      setCartTickets([ticketData]);
+      return;
+    }
 
     const existingTicket = cartTickets.find(
       (ticket) => ticket.name === ticketData.name
