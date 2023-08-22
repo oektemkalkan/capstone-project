@@ -26,7 +26,7 @@ export default function PopDetails() {
     event.preventDefault();
 
     const id = () => {
-      Math.floor(Math.random() * 999).toString();
+      return Math.random().toString(32).substring(2);
     };
 
     const ticketData = {

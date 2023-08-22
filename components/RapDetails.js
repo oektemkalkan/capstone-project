@@ -26,7 +26,7 @@ export default function RapDetails() {
     event.preventDefault();
 
     const id = () => {
-      return Math.floor(Math.random() * 999).toString();
+      return Math.random().toString(32).substring(2);
     };
 
     const ticketData = {

@@ -10,7 +10,7 @@ export default function ShoppingCart({ ticket }) {
   const [cartTickets, setCartTickets] = useLocalStorageState("cartTicket", []);
 
   const goBack = () => {
-    router.back();
+    router.push("/");
   };
 
   const handleDeleteTicket = (ticketToDelete) => {
