@@ -3,6 +3,7 @@ import useSWR from "swr";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
+import useLocalStorageState from "use-local-storage-state";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -11,6 +12,7 @@ export default function RapDetails() {
   const { id } = router.query;
 
   const { data, error } = useSWR(`/api/rapstars/${id}`, fetcher);
+  const [cartTickets, setCartTickets] = useLocalStorageState("cartTicket", []);
 
   if (error) {
     return <h1>Nothing there..</h1>;
@@ -23,7 +25,12 @@ export default function RapDetails() {
   async function handleAddTicket(event) {
     event.preventDefault();
 
+    const id = () => {
+      return Math.random().toString(32).substring(2);
+    };
+
     const ticketData = {
+      id: id(),
       image: data.image,
       rating: data.rating,
       name: data.name,
@@ -33,9 +40,9 @@ export default function RapDetails() {
       currency: data.currency,
     };
 
-    let cartTickets = JSON.parse(localStorage.getItem("cartTicket"));
-    if (!Array.isArray(cartTickets)) {
-      cartTickets = [];
+    if (!cartTickets) {
+      setCartTickets([ticketData]);
+      return;
     }
 
     const existingTicket = cartTickets.find(
@@ -46,9 +53,7 @@ export default function RapDetails() {
       return;
     }
 
-    cartTickets.push(ticketData);
-
-    localStorage.setItem("cartTicket", JSON.stringify(cartTickets));
+    setCartTickets([...cartTickets, ticketData]);
   }
 
   return (
