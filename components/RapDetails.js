@@ -13,6 +13,7 @@ export default function RapDetails() {
 
   const { data, error } = useSWR(`/api/rapstars/${id}`, fetcher);
   const [cartTickets, setCartTickets] = useLocalStorageState("cartTicket", []);
+  const [reviews, setReviews] = useLocalStorageState("review", []);
 
   if (error) {
     return <h1>Nothing there..</h1>;
@@ -56,9 +57,48 @@ export default function RapDetails() {
     setCartTickets([...cartTickets, ticketData]);
   }
 
+  async function handleAddReview(event) {
+    event.preventDefault(event.target);
+
+    const reviewId = () => {
+      return Math.random().toString(32).substring(2);
+    };
+
+    const formData = new FormData(event.target);
+    const reviewData = {
+      id: reviewId(),
+      name: formData.get("name"),
+      rating: Number(formData.get("rating")),
+      opinion: formData.get("opinion"),
+      artistName: data.name,
+    };
+
+    try {
+      if (!reviews) {
+        setReviews([reviewData]);
+      } else {
+        const existingReview = reviews.find(
+          (review) => review.id === reviewData.id
+        );
+        if (existingReview) {
+          console.log(`A review for '${data.name}' is already in the cart.`);
+        } else {
+          setReviews([...reviews, reviewData]);
+        }
+      }
+
+      await onSubmitReview(reviewData);
+    } catch (error) {
+      console.error("Something wrong:", error.message);
+    }
+
+    event.target.reset();
+    event.target.elements[0].focus();
+  }
+
   return (
     <>
-      <button onClick={() => router.push("/RapPage")}>back</button>
+      <button onClick={() => router.push(`/RapPage`)}>back</button>
       <Div>
         <Link href={"/shoppingCart"}>SHOPPING CART</Link>
       </Div>
@@ -70,6 +110,9 @@ export default function RapDetails() {
           width={"280"}
           height={"150"}
         />
+        <button onClick={() => router.push(`/ReviewPage?name=${data.name}`)}>
+          RATING
+        </button>
         <p>{data.rating}</p>
         <h4>{data.name}</h4>
 
@@ -82,6 +125,39 @@ export default function RapDetails() {
           </button>
         </div>
       </article>
+      <form onSubmit={handleAddReview}>
+        <label htmlFor="name">Enter your name</label>
+        <input
+          name="name"
+          type="text"
+          minLength={3}
+          maxLength={20}
+          pattern="[A-Za-z\s]+"
+          placeholder="Username"
+          required
+        />
+
+        <input
+          name="rating"
+          type="number"
+          min={1}
+          max={5}
+          pattern="^\d+"
+          placeholder="rate"
+          required
+        />
+
+        <input
+          name="opinion"
+          type="text"
+          minLength={1}
+          maxLength={100}
+          pattern="[A-Za-z\s]+"
+          placeholder="opinion"
+          required
+        />
+        <button type="submit">SEND</button>
+      </form>
     </>
   );
 }
