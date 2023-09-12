@@ -12,6 +12,7 @@
   "dependencies": {
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.10",
+    "lottie-react": "^2.4.0",
     "mongoose": "^7.4.1",
     "next": "13.4.10",
     "next-link": "^2.0.0",

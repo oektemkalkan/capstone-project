@@ -1,3 +1,5 @@
+import Header from "@/components/mainHeader/header";
+import BackButton from "@/components/backButton/backButton";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import useLocalStorageState from "use-local-storage-state";
@@ -11,15 +13,12 @@ export default function Reviews() {
   }
   const [reviews = []] = useLocalStorageState("review");
 
-  const goBack = () => {
-    router.back({ name });
-  };
-
   const artistReviews = reviews.filter((review) => review.artistName === name);
 
   return (
     <>
-      <button onClick={goBack}>back</button>
+      <Header />
+      <BackButton />
 
       <h1>{name}'s Ratings</h1>
 
@@ -34,7 +33,6 @@ export default function Reviews() {
           </div>
         ))
       )}
-      {console.log(artistReviews)}
     </>
   );
 }
