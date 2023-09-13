@@ -30,7 +30,7 @@ export default function Home() {
           <Lottie animationData={gifdata} loop={true} />
         </AnimatedGifDiv>
         <StyledP>
-          'the wine that fills <br /> the cup of <br /> silence'
+          &lsquo;the wine that fills <br /> the cup of <br /> silence&rsquo;
         </StyledP>
       </ContainerDiv>
       <StyledNav>

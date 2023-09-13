@@ -6,12 +6,13 @@ import useLocalStorageState from "use-local-storage-state";
 
 export default function Reviews() {
   const router = useRouter();
+  const [reviews = []] = useLocalStorageState("review");
+
   const { name } = router.query;
 
   if (name === undefined) {
     return <p>No artist name found.</p>;
   }
-  const [reviews = []] = useLocalStorageState("review");
 
   const artistReviews = reviews.filter((review) => review.artistName === name);
 
@@ -20,7 +21,7 @@ export default function Reviews() {
       <Header />
       <BackButton />
 
-      <h1>{name}'s Ratings</h1>
+      <h1>{name}&apos;s Ratings</h1>
 
       {artistReviews.length === 0 ? (
         <p>No reviews available for {name}.</p>
