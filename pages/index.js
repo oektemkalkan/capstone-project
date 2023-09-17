@@ -35,12 +35,7 @@ export default function Home() {
       </ContainerDiv>
       <StyledNav>
         <RapContainerDiv>
-          <StyledImageRap
-            src={RapImage}
-            alt="Rap Artist"
-            width={700}
-            height={400}
-          />
+          <StyledImageRap src={RapImage} alt="Rap Artist" priority={true} />
           <Link
             href={"/RapPage"}
             style={{
@@ -56,12 +51,7 @@ export default function Home() {
         </RapContainerDiv>
         <br />
         <PopContainerDiv>
-          <StyledImagePop
-            src={PopImage}
-            alt="Pop Artist"
-            width={700}
-            height={400}
-          />
+          <StyledImagePop src={PopImage} alt="Pop Artist" priority={true} />
           <Link
             href={"/PopPage"}
             style={{
@@ -162,24 +152,28 @@ const PopContainerDiv = styled.div`
 
 const StyledImageRap = styled(Image)`
   position: absolute;
-  top: -240px;
-  left: 0;
-  width: 100%;
+  top: -580px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  height: 800px;
   object-fit: cover;
-  opacity: 0.85;
+  opacity: 0.9;
   z-index: -1;
 `;
 
 const StyledImagePop = styled(Image)`
   position: absolute;
-  top: -220px;
-  left: 0;
-  width: 100%;
+  top: -420px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  height: 800px;
   object-fit: cover;
-  opacity: 0.85;
+  opacity: 0.9;
   z-index: -10;
 
   @media (max-width: 375px) {
-    top: -200px;
+    top: -450px;
   }
 `;

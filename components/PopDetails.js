@@ -16,9 +16,13 @@ export default function PopDetails() {
   const router = useRouter();
   const { id } = router.query;
 
-  const { data, error } = useSWR(`/api/popstars/${id}`, fetcher);
   const [cartTickets, setCartTickets] = useLocalStorageState("cartTicket", []);
   const [reviews, setReviews] = useLocalStorageState("review", []);
+  const { data, error } = useSWR(id ? `/api/popstars/${id}` : null, fetcher);
+
+  if (!id) {
+    return <h1>No ID!</h1>;
+  }
 
   if (error) {
     return <h1>Nothing there..</h1>;
@@ -68,43 +72,15 @@ export default function PopDetails() {
     setCartTickets([...cartTickets, ticketData]);
   }
 
-  async function handleAddReview(event) {
-    event.preventDefault(event.target);
-
-    const reviewId = () => {
-      return Math.random().toString(32).substring(2);
-    };
-
-    const formData = new FormData(event.target);
-    const reviewData = {
-      id: reviewId(),
-      name: formData.get("name"),
-      rating: Number(formData.get("rating")),
-      opinion: formData.get("opinion"),
-      artistName: data.name,
-    };
-
+  async function onSubmitReview(reviewData) {
     try {
-      if (!reviews) {
-        setReviews([reviewData]);
-      } else {
-        const existingReview = reviews.find(
-          (review) => review.id === reviewData.id
-        );
-        if (existingReview) {
-          console.log(`A review for '${data.name}' is already in the cart.`);
-        } else {
-          setReviews([...reviews, reviewData]);
-        }
-      }
+      const loadedReviews = JSON.parse(localStorage.getItem("reviews")) || [];
 
-      await onSubmitReview(reviewData);
+      loadedReviews.push(reviewData);
+      localStorage.setItem("reviews", JSON.stringify(loadedReviews));
     } catch (error) {
       console.error("Something wrong:", error.message);
     }
-
-    event.target.reset();
-    event.target.elements[0].focus();
   }
 
   return (
@@ -136,7 +112,12 @@ export default function PopDetails() {
           </button>
         </div>
       </article>
-      <InputForm onClick={handleAddReview} />
+      <InputForm
+        reviews={reviews}
+        setReviews={setReviews}
+        data={data}
+        onSubmitReview={onSubmitReview}
+      />
     </>
   );
 }

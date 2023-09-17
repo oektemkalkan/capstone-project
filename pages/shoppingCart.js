@@ -14,7 +14,7 @@ export default function ShoppingCart() {
 
   const handleDeleteTicket = (ticketToDelete) => {
     const updatedCartTickets = cartTickets.filter(
-      (ticket) => ticket !== ticketToDelete
+      (ticket) => ticket.id !== ticketToDelete
     );
     setCartTickets(updatedCartTickets);
   };
@@ -55,7 +55,7 @@ export default function ShoppingCart() {
                   <p>
                     {ticket.price} {ticket.currency}
                   </p>
-                  <button onClick={() => handleDeleteTicket(ticket)}>
+                  <button onClick={() => handleDeleteTicket(ticket.id)}>
                     DELETE
                   </button>
                 </StyledTicketInfoDiv>
@@ -90,9 +90,15 @@ const StyledLi = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 900px;
+  width: 500px;
   height: 500px;
   list-style-type: none;
+  margin-bottom: 60px;
+
+  @media (max-width: 375px) {
+    width: 300px;
+    height: 300px;
+  }
 `;
 
 const StyledImageCard = styled(Image)`
@@ -136,7 +142,7 @@ const StyledDivPopUp = styled.div`
   }
 `;
 
-const StyledContainer = styled.p`
+const StyledContainer = styled.div`
   displey: flex;
   justify-content: center;
   text-align: center;

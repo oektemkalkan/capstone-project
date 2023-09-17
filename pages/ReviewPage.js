@@ -6,7 +6,7 @@ import useLocalStorageState from "use-local-storage-state";
 
 export default function Reviews() {
   const router = useRouter();
-  const [reviews = []] = useLocalStorageState("review");
+  const [reviews] = useLocalStorageState("review", []);
 
   const { name } = router.query;
 
@@ -29,8 +29,8 @@ export default function Reviews() {
         artistReviews.map((review) => (
           <div key={review.id}>
             <h2>{review.name}</h2>
-            <p>Rating: {review.rating}</p>
-            <p>Opinion: {review.opinion}</p>
+            <p>⭐️ {review.rating}</p>
+            <p>{review.opinion}</p>
           </div>
         ))
       )}
