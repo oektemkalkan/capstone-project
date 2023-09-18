@@ -1,9 +1,14 @@
+import Header from "@/components/mainHeader/header";
+import ShoppingCart from "@/components/shoppingCartButton/shoppingCart";
+import BackButton from "@/components/backButton/backButton";
+import InputForm from "./inputForm/inputForm";
 import styled from "styled-components";
 import useSWR from "swr";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import Link from "next/link";
 import useLocalStorageState from "use-local-storage-state";
+import Lottie from "lottie-react";
+import gifloading from "../public/animation_loading.json";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -11,15 +16,26 @@ export default function PopDetails() {
   const router = useRouter();
   const { id } = router.query;
 
-  const { data, error } = useSWR(`/api/popstars/${id}`, fetcher);
   const [cartTickets, setCartTickets] = useLocalStorageState("cartTicket", []);
+  const [reviews, setReviews] = useLocalStorageState("review", []);
+  const { data, error } = useSWR(id ? `/api/popstars/${id}` : null, fetcher);
+
+  if (!id) {
+    return <h1>No ID!</h1>;
+  }
 
   if (error) {
     return <h1>Nothing there..</h1>;
   }
 
   if (!data) {
-    return <h1>LOADING...</h1>;
+    return (
+      <>
+        <GifLoadingDiv>
+          <Lottie animationData={gifloading} loop={true} />
+        </GifLoadingDiv>
+      </>
+    );
   }
 
   async function handleAddTicket(event) {
@@ -56,12 +72,24 @@ export default function PopDetails() {
     setCartTickets([...cartTickets, ticketData]);
   }
 
+  async function onSubmitReview(reviewData) {
+    try {
+      const loadedReviews = JSON.parse(localStorage.getItem("reviews")) || [];
+
+      loadedReviews.push(reviewData);
+      localStorage.setItem("reviews", JSON.stringify(loadedReviews));
+    } catch (error) {
+      console.error("Something wrong:", error.message);
+    }
+  }
+
   return (
     <>
-      <button onClick={() => router.push("/PopPage")}>back</button>
-      <Div>
-        <Link href={"/shoppingCart"}>SHOPPING CART</Link>
-      </Div>
+      <Header />
+      <StyledDiv>
+        <BackButton />
+        <ShoppingCart />
+      </StyledDiv>
       <article>
         <Image
           src={data.image}
@@ -70,7 +98,9 @@ export default function PopDetails() {
           width={"280"}
           height={"150"}
         />
-        <p>{data.rating}</p>
+        <button onClick={() => router.push(`/ReviewPage?name=${data.name}`)}>
+          {data.rating}
+        </button>
         <h4>{data.name}</h4>
 
         <div>
@@ -82,10 +112,27 @@ export default function PopDetails() {
           </button>
         </div>
       </article>
+      <InputForm
+        reviews={reviews}
+        setReviews={setReviews}
+        data={data}
+        onSubmitReview={onSubmitReview}
+      />
     </>
   );
 }
 
-const Div = styled.div`
-  text-align: right;
+const GifLoadingDiv = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+const StyledDiv = styled.div`
+  display: flex;
+
+  @media (max-width: 375px) {
+    margin: 0px 16% 0px 2%;
+  }
 `;
