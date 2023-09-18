@@ -8,17 +8,15 @@ export default function Reviews() {
   const router = useRouter();
   const [reviews] = useLocalStorageState("review", []);
 
-  if (!reviews) {
-    return <p>No reviews available.</p>;
-  }
-
   const { name } = router.query;
 
   if (name === undefined) {
     return <p>No artist name found.</p>;
   }
 
-  const artistReviews = reviews.filter((review) => review.artistName === name);
+  const artistReviews = reviews
+    ? reviews.filter((review) => review.artistName === name)
+    : [];
 
   return (
     <>
