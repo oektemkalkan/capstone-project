@@ -8,6 +8,10 @@ export default function Reviews() {
   const router = useRouter();
   const [reviews] = useLocalStorageState("review", []);
 
+  if (!reviews) {
+    return <p>No reviews available.</p>;
+  }
+
   const { name } = router.query;
 
   if (name === undefined) {
