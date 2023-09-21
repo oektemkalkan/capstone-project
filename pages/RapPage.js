@@ -48,17 +48,13 @@ export default function RapPage() {
                 height={"300"}
                 alt="Rap-Artist"
                 priority="high"
-                style={{
-                  position: "relative",
-                  zIndex: -1,
-                }}
               />
               <StyledRatingP>{rapstars.rating}</StyledRatingP>
               <StyledArtistnameP>{rapstars.name}</StyledArtistnameP>
               <StyledPriceP>
                 {rapstars.currency} {rapstars.price}
               </StyledPriceP>
-              <Link
+              <StyledLink
                 href={`/rapDetails/${rapstars._id}`}
                 style={{
                   textDecoration: "none",
@@ -71,7 +67,7 @@ export default function RapPage() {
                 }}
               >
                 Find Tickets
-              </Link>
+              </StyledLink>
             </StyledLi>
           ))}
         </ul>
@@ -135,8 +131,10 @@ const StyledLi = styled.li`
 `;
 
 const StyledImage = styled(Image)`
+  position: relative;
   border-radius: 10px 0 0 0;
   box-shadow: -5px 0px 30px rgba(0, 0, 0, 0.8);
+  z-index: -1;
   @media (max-width: 375px) {
     width: 300px;
     height: 150px;
@@ -172,4 +170,14 @@ const StyledPriceP = styled.p`
   padding: 20px 0 10px 5px;
   font-size: 13px;
   letter-spacing: 3px;
+`;
+
+const StyledLink = styled(Link)`
+  position: relative;
+  text-decoration: none;
+  color: #139df4;
+  bottom: 10px;
+  left: 200px;
+  font-size: 15px;
+  font-wheight: bold;
 `;
