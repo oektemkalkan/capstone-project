@@ -20,6 +20,7 @@ export default function BackButton() {
           height="30"
           fill="black"
           viewBox="0 0 16 16"
+          opacity={0.5}
         >
           <path
             fillRule="evenodd"

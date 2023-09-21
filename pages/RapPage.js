@@ -30,31 +30,45 @@ export default function RapPage() {
   return (
     <>
       <Header />
-      <StyledDiv>
+      <StyledHeadDiv>
         <BackButton />
         <ShoppingCart />
-      </StyledDiv>
-      <div>
-        <h2>RAP</h2>
-      </div>
+      </StyledHeadDiv>
+      <StyledRapLineDiv>
+        <StyledRapP>RAP</StyledRapP>
+        <StyledHr />
+      </StyledRapLineDiv>
       <div>
         <ul>
           {data.map((rapstars) => (
-            <li key={rapstars._id}>
-              <Image
+            <StyledLi key={rapstars._id}>
+              <StyledImage
                 src={rapstars.image}
-                width={"280"}
-                height={"150"}
+                width={"550"}
+                height={"300"}
                 alt="Rap-Artist"
+                priority="high"
               />
-              <p>{rapstars.rating}</p>
-              <h4>{rapstars.name}</h4>
-
-              <p>
+              <StyledRatingP>{rapstars.rating}</StyledRatingP>
+              <StyledArtistnameP>{rapstars.name}</StyledArtistnameP>
+              <StyledPriceP>
                 {rapstars.currency} {rapstars.price}
-              </p>
-              <Link href={`/rapDetails/${rapstars._id}`}>Find Tickets</Link>
-            </li>
+              </StyledPriceP>
+              <StyledLink
+                href={`/rapDetails/${rapstars._id}`}
+                style={{
+                  textDecoration: "none",
+                  color: "#139df4",
+                  position: "relative",
+                  bottom: "10px",
+                  left: "200px",
+                  fontSize: "15px",
+                  fontWeight: "bold",
+                }}
+              >
+                Find Tickets
+              </StyledLink>
+            </StyledLi>
           ))}
         </ul>
       </div>
@@ -69,10 +83,101 @@ const GifLoadingDiv = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-const StyledDiv = styled.div`
+const StyledHeadDiv = styled.div`
   display: flex;
 
   @media (max-width: 375px) {
     margin: 0px 16% 0px 2%;
   }
+`;
+
+const StyledRapLineDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 5% 0 5%;
+  border-radius: 50px;
+`;
+
+const StyledRapP = styled.p`
+  font-size: 10px;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+  opacity: 0.15;
+`;
+
+const StyledHr = styled.hr`
+  width: 200px;
+  height: 0.5px;
+  background-color: black;
+  border: none;
+  margin: 0;
+  opacity: 0.2;
+`;
+
+const StyledLi = styled.li`
+  position: relative;
+  margin-bottom: 5%;
+  width: 80%;
+  box-shadow: 10px 15px 20px rgba(128, 128, 128, 0.1);
+  border-radius: 0 0 10px 0;
+  list-style-type: none;
+
+  @media (max-width: 375px) {
+    width: 300px;
+    margin-bottom: 15%;
+  }
+`;
+
+const StyledImage = styled(Image)`
+  position: relative;
+  border-radius: 10px 0 0 0;
+  box-shadow: -5px 0px 30px rgba(0, 0, 0, 0.8);
+  z-index: -1;
+  @media (max-width: 375px) {
+    width: 300px;
+    height: 150px;
+  }
+`;
+
+const StyledRatingP = styled.p`
+  position: absolute;
+  transform: rotate(180deg);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  letter-spacing: 10px;
+  left: -16px;
+  top: 0px;
+  opacity: 0.45;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 0 0 10px 0;
+  padding: 5px 5px 0 10px;
+  height: 150px;
+  box-shadow: -15px 0px 20px rgba(0, 0, 0, 1);
+`;
+
+const StyledArtistnameP = styled.p`
+  margin: 0;
+  padding: 5px 0 0 5px;
+  font-size: 15px;
+  letter-spacing: 8px;
+`;
+
+const StyledPriceP = styled.p`
+  margin: 0;
+  padding: 20px 0 10px 5px;
+  font-size: 13px;
+  letter-spacing: 3px;
+`;
+
+const StyledLink = styled(Link)`
+  position: relative;
+  text-decoration: none;
+  color: #139df4;
+  bottom: 10px;
+  left: 200px;
+  font-size: 15px;
+  font-wheight: bold;
 `;
