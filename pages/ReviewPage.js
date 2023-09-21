@@ -6,7 +6,7 @@ import useLocalStorageState from "use-local-storage-state";
 
 export default function Reviews() {
   const router = useRouter();
-  const [reviews] = useLocalStorageState("review", []);
+  const [reviews, setReviews] = useLocalStorageState("review", []);
 
   const { name } = router.query;
 
@@ -17,6 +17,13 @@ export default function Reviews() {
   const artistReviews = reviews
     ? reviews.filter((review) => review.artistName === name)
     : [];
+
+  const handleDeleteReview = (reviewToDelete) => {
+    const updatedReviews = reviews.filter(
+      (reviews) => reviews.id !== reviewToDelete
+    );
+    setReviews(updatedReviews);
+  };
 
   return (
     <>
@@ -33,6 +40,9 @@ export default function Reviews() {
             <h2>{review.name}</h2>
             <p>⭐️ {review.rating}</p>
             <p>{review.opinion}</p>
+            <button onClick={() => handleDeleteReview(review.id)}>
+              DELETE
+            </button>
           </div>
         ))
       )}
