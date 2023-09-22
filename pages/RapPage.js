@@ -49,8 +49,11 @@ export default function RapPage() {
                 alt="Rap-Artist"
                 priority="high"
               />
-              <StyledRatingP>{rapstars.rating}</StyledRatingP>
+              <StyledRatingP>
+                <StyledStarSpan>{rapstars.rating}</StyledStarSpan>
+              </StyledRatingP>
               <StyledArtistnameP>{rapstars.name}</StyledArtistnameP>
+              <StyledHr2 />
               <StyledPriceP>
                 {rapstars.currency} {rapstars.price}
               </StyledPriceP>
@@ -116,6 +119,16 @@ const StyledHr = styled.hr`
   opacity: 0.2;
 `;
 
+const StyledHr2 = styled.hr`
+  width: 83px;
+  height: 0.1px;
+  background-color: black;
+  border: none;
+  margin: 10px 0 0 30px;
+  opacity: 0.2;
+  transform: rotate(120deg);
+`;
+
 const StyledLi = styled.li`
   position: relative;
   margin-bottom: 5%;
@@ -133,11 +146,11 @@ const StyledLi = styled.li`
 const StyledImage = styled(Image)`
   position: relative;
   border-radius: 10px 0 0 0;
-  box-shadow: -5px 0px 30px rgba(0, 0, 0, 0.8);
+  box-shadow: -5px 0px 30px rgba(0, 0, 0, 0.6);
   z-index: -1;
   @media (max-width: 375px) {
     width: 300px;
-    height: 150px;
+    height: 180px;
   }
 `;
 
@@ -150,12 +163,16 @@ const StyledRatingP = styled.p`
   letter-spacing: 10px;
   left: -16px;
   top: 0px;
-  opacity: 0.45;
-  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 0.8;
+  background-color: rgba(0, 0, 0, 0.35);
   border-radius: 0 0 10px 0;
   padding: 5px 5px 0 10px;
-  height: 150px;
-  box-shadow: -15px 0px 20px rgba(0, 0, 0, 1);
+  height: 170px;
+  box-shadow: -15px 0px 20px rgba(0, 0, 0, 0.8);
+`;
+
+const StyledStarSpan = styled.span`
+  filter: saturate(0);
 `;
 
 const StyledArtistnameP = styled.p`
@@ -170,6 +187,7 @@ const StyledPriceP = styled.p`
   padding: 20px 0 10px 5px;
   font-size: 13px;
   letter-spacing: 3px;
+  font-weight: bolder;
 `;
 
 const StyledLink = styled(Link)`
@@ -179,5 +197,5 @@ const StyledLink = styled(Link)`
   bottom: 10px;
   left: 200px;
   font-size: 15px;
-  font-wheight: bold;
+  font-weight: bold;
 `;

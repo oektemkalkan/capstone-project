@@ -30,31 +30,48 @@ export default function PopPage() {
   return (
     <>
       <Header />
-      <StyledDiv>
+      <StyledHeadDiv>
         <BackButton />
         <ShoppingCart />
-      </StyledDiv>
-      <div>
-        <h2>POP</h2>
-      </div>
+      </StyledHeadDiv>
+      <StyledPopLineDiv>
+        <StyledPopP>POP</StyledPopP>
+        <StyledHr />
+      </StyledPopLineDiv>
       <div>
         <ul>
           {data.map((popstars) => (
-            <li key={popstars._id}>
-              <Image
+            <StyledLi key={popstars._id}>
+              <StyledImage
                 src={popstars.image}
-                width={"280"}
-                height={"150"}
+                width={"550"}
+                height={"300"}
                 alt="Pop-Artist"
+                priority="high"
               />
-              <p>{popstars.rating}</p>
-              <h4>{popstars.name}</h4>
-
-              <p>
+              <StyledRatingP>
+                <StyledStarSpan>{popstars.rating}</StyledStarSpan>
+              </StyledRatingP>
+              <StyledArtistnameP>{popstars.name}</StyledArtistnameP>
+              <StyledHr2 />
+              <StyledPriceP>
                 {popstars.currency} {popstars.price}
-              </p>
-              <Link href={`/popDetails/${popstars._id}`}>Find Tickets</Link>
-            </li>
+              </StyledPriceP>
+              <StyledLink
+                href={`/popDetails/${popstars._id}`}
+                style={{
+                  textDecoration: "none",
+                  color: "#139df4",
+                  position: "relative",
+                  bottom: "10px",
+                  left: "200px",
+                  fontSize: "15px",
+                  fontWeight: "bold",
+                }}
+              >
+                Find Tickets
+              </StyledLink>
+            </StyledLi>
           ))}
         </ul>
       </div>
@@ -69,10 +86,116 @@ const GifLoadingDiv = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-const StyledDiv = styled.div`
+const StyledHeadDiv = styled.div`
   display: flex;
 
   @media (max-width: 375px) {
     margin: 0px 16% 0px 2%;
   }
+`;
+
+const StyledPopLineDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 5% 0 5%;
+  border-radius: 50px;
+`;
+
+const StyledPopP = styled.p`
+  font-size: 10px;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+  opacity: 0.15;
+`;
+
+const StyledHr = styled.hr`
+  width: 200px;
+  height: 0.5px;
+  background-color: black;
+  border: none;
+  margin: 0;
+  opacity: 0.2;
+`;
+
+const StyledHr2 = styled.hr`
+  width: 83px;
+  height: 0.1px;
+  background-color: black;
+  border: none;
+  margin: 10px 0 0 30px;
+  opacity: 0.2;
+  transform: rotate(120deg);
+`;
+
+const StyledLi = styled.li`
+  position: relative;
+  margin-bottom: 5%;
+  width: 80%;
+  box-shadow: 10px 15px 20px rgba(128, 128, 128, 0.1);
+  border-radius: 0 0 10px 0;
+  list-style-type: none;
+
+  @media (max-width: 375px) {
+    width: 300px;
+    margin-bottom: 15%;
+  }
+`;
+
+const StyledImage = styled(Image)`
+  position: relative;
+  border-radius: 10px 0 0 0;
+  box-shadow: -5px 0px 30px rgba(0, 0, 0, 0.6);
+  z-index: -1;
+  @media (max-width: 375px) {
+    width: 300px;
+    height: 180px;
+  }
+`;
+
+const StyledRatingP = styled.p`
+  position: absolute;
+  transform: rotate(180deg);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  letter-spacing: 10px;
+  left: -16px;
+  top: 0px;
+  opacity: 0.8;
+  background-color: rgba(0, 0, 0, 0.35);
+  border-radius: 0 0 10px 0;
+  padding: 5px 5px 0 10px;
+  height: 170px;
+  box-shadow: -15px 0px 20px rgba(0, 0, 0, 0.8);
+`;
+
+const StyledStarSpan = styled.span`
+  filter: saturate(0);
+`;
+
+const StyledArtistnameP = styled.p`
+  margin: 0;
+  padding: 5px 0 0 5px;
+  font-size: 15px;
+  letter-spacing: 8px;
+`;
+
+const StyledPriceP = styled.p`
+  margin: 0;
+  padding: 20px 0 10px 5px;
+  font-size: 13px;
+  letter-spacing: 3px;
+  font-weight: bolder;
+`;
+
+const StyledLink = styled(Link)`
+  position: relative;
+  text-decoration: none;
+  color: #139df4;
+  bottom: 10px;
+  left: 200px;
+  font-size: 15px;
+  font-wheight: bold;
 `;

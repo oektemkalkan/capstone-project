@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useState } from "react";
 
 export default function InputForm({
   reviews,
@@ -6,6 +7,8 @@ export default function InputForm({
   data,
   onSubmitReview,
 }) {
+  const [rating, setRating] = useState("");
+
   async function handleAddReview(event) {
     event.preventDefault();
 
@@ -36,63 +39,153 @@ export default function InputForm({
         }
       }
 
+      setRating("");
+
+      event.target.reset();
+      event.target.elements[0].focus();
+
       await onSubmitReview(reviewData);
     } catch (error) {
       console.error("Something wrong:", error.message);
     }
+  }
 
-    event.target.reset();
-    event.target.elements[0].focus();
+  function handleRatingChange(event) {
+    const inputValue = event.target.value;
+    if (inputValue.length <= 1) {
+      setRating(inputValue);
+    }
   }
 
   return (
     <>
-      <form name="formReview" onSubmit={handleAddReview}>
-        <label htmlFor="name">Enter your name</label>
-
-        <input
-          id="name"
-          name="name"
-          type="text"
-          minLength={3}
-          maxLength={20}
-          pattern="[A-Za-z\s]+"
-          placeholder="Username"
-          required
-        />
-
-        <input
-          name="rating"
-          type="number"
-          min={1}
-          max={5}
-          pattern="^\d+"
-          placeholder="rate"
-          required
-        />
-
-        <input
+      <StyledForm name="formReview" onSubmit={handleAddReview}>
+        <StyledLabel htmlFor="form">Rating</StyledLabel>
+        <StyledRow name="form">
+          <StyledInput
+            id="name"
+            name="name"
+            type="text"
+            minLength={3}
+            maxLength={20}
+            pattern="[A-Za-zÖÜÄöüäß\s]+"
+            placeholder="username"
+            required
+          />
+          <StyledRateInput
+            name="rating"
+            type="number"
+            min={1}
+            max={5}
+            pattern="^\d+"
+            placeholder="1-5"
+            required
+            value={rating}
+            onInput={handleRatingChange}
+          />
+        </StyledRow>
+        <StyledTextArea
           name="opinion"
           type="text"
           minLength={1}
           maxLength={100}
           pattern=".*"
-          placeholder="opinion"
+          placeholder="tell us your thoughts"
           required
         />
 
-        <button type="submit">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            fill="black"
-            viewBox="0 0 16 16"
-          >
-            <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z" />
-          </svg>
-        </button>
-      </form>
+        <StyledButton type="submit">send</StyledButton>
+      </StyledForm>
     </>
   );
 }
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  max-width: 325px;
+  margin: 0 auto;
+  border-left: 0.5px dotted #ccc;
+  border-right: 0.5px dotted #ccc;
+  padding: 25px 20px 25px 20px;
+  margin-bottom: 30px;
+`;
+
+const StyledRow = styled.div`
+  display: flex;
+`;
+
+const StyledLabel = styled.label`
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  border-bottom: 0.5px solid #000;
+  width: 25%;
+  padding-bottom: 2px;
+`;
+
+const StyledInput = styled.input`
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+
+  &::placeholder {
+    font-size: 14px;
+    font-family: Verdana;
+  }
+`;
+
+const StyledRateInput = styled.input`
+  padding: 10px 20px 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-left: 40px;
+  margin-bottom: 10px;
+
+  &::placeholder {
+    font-size: 9px;
+    font-family: Verdana;
+  }
+`;
+
+const StyledTextArea = styled.textarea`
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  white-space: pre-wrap;
+  word-break: break-all;
+  resize: none;
+  height: 80px;
+
+  &::placeholder {
+    font-size: 14px;
+    font-family: Verdana;
+  }
+`;
+
+const StyledButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffb201;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  color: white;
+
+  svg {
+    margin-right: 5px;
+  }
+
+  &:hover {
+    background-color: #e5a200;
+  }
+`;
