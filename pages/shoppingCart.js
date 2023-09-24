@@ -58,8 +58,8 @@ export default function ShoppingCart() {
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
+                    width="15"
+                    height="15"
                     fill="red"
                     viewBox="0 0 16 16"
                   >
@@ -69,6 +69,7 @@ export default function ShoppingCart() {
               </StyledLi>
             ))}
           </StyledUl>
+          <StyledHr />
           <StyledBuyButton onClick={handleBuyTickets}>purchase</StyledBuyButton>
         </>
       ) : (
@@ -275,4 +276,13 @@ const StyledImage = styled(Image)`
     width: 85%;
     height: 550px;
   }
+`;
+
+const StyledHr = styled.hr`
+  width: 180px;
+  height: 0.5px;
+  background-color: black;
+  border: none;
+  margin: 0 0 15px 35px;
+  opacity: 0.2;
 `;
