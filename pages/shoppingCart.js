@@ -33,37 +33,34 @@ export default function ShoppingCart() {
       <BackButton />
       {cartTickets && cartTickets.length > 0 ? (
         <>
-          <ul>
+          <StyledUl>
             {cartTickets.map((ticket) => (
               <StyledLi key={ticket.id}>
                 <StyledImageDiv>
                   <StyledImageCard
                     src={ticket.image}
                     width={"550"}
-                    height={"300"}
+                    height={"140"}
                     alt="Ticket-Picture"
                     priority="high"
                   />
                 </StyledImageDiv>
+                <StyledNameP>{ticket.name}</StyledNameP>
                 <StyledTicketInfoDiv>
-                  <StyledNameP>{ticket.name}</StyledNameP>
-
-                  <p>{ticket.rating}</p>
-                  <p>{ticket.location}</p>
-                  <p>{ticket.date}</p>
-                  <p>
+                  <StyledLocationP>{ticket.location}</StyledLocationP>
+                  <StyledDateP>{ticket.date}</StyledDateP>
+                  <StyledPriceP>
                     {ticket.price} {ticket.currency}
-                  </p>
+                  </StyledPriceP>
                 </StyledTicketInfoDiv>
                 <StyledDeleteButton
                   onClick={() => handleDeleteTicket(ticket.id)}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
+                    width="16"
+                    height="16"
                     fill="red"
-                    class="bi bi-trash3"
                     viewBox="0 0 16 16"
                   >
                     <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
@@ -71,8 +68,8 @@ export default function ShoppingCart() {
                 </StyledDeleteButton>
               </StyledLi>
             ))}
-          </ul>
-          <button onClick={handleBuyTickets}>purchase</button>
+          </StyledUl>
+          <StyledBuyButton onClick={handleBuyTickets}>purchase</StyledBuyButton>
         </>
       ) : (
         <>
@@ -96,62 +93,120 @@ export default function ShoppingCart() {
   );
 }
 
+const StyledUl = styled.ul`
+  position: relative;
+  margin: 0;
+  padding: 0;
+`;
+
 const StyledLi = styled.li`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   list-style-type: none;
-  margin-top: 80px;
-  margin-bottom: 60px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  margin-bottom: 50px;
+  text-align: center;
   width: 300px;
-  height: 150px;
+  height: 160px;
 
   @media (max-width: 375px) {
   }
 `;
 
 const StyledImageCard = styled(Image)`
-  position: relative;
   width: 300px;
-  max-height: 200px;
+  max-height: 140px;
   object-fit: cover;
-  opacity: 0.8;
-  border-radius: 10px;
-  z-index: -10;
+  opacity: 0.2;
+  z-index: 20;
   @media (max-width: 375px) {
   }
 `;
 
 const StyledImageDiv = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  border: 1px dashed black;
   padding: 20px;
-  border-radius: 10px;
   width: 300px;
+  height: 140px;
+  background-color: white;
+  margin: 0 auto;
+  opacity: 1;
   @media (max-width: 375px) {
   }
 `;
 
 const StyledTicketInfoDiv = styled.div`
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 2;
   padding: 10px;
   @media (max-width: 375px) {
   }
 `;
 
-const StyledNameP = styled.div`
+const StyledLocationP = styled.p`
+  margin-top: 30px;
+  font-weight: 900;
+  letter-spacing: 2px;
+`;
+
+const StyledDateP = styled.p`
+  margin-top: 15px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  font-size: 15px;
+`;
+
+const StyledPriceP = styled.p`
+  margin-top: 15px;
+  font-size: 13px;
+  background-color: rgba(255, 178, 1, 2);
+  color: white;
+  font-weight: 900;
+  padding: 2px 0 2px 0;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+const StyledNameP = styled.p`
+  position: absolute;
+  top: 60px;
+  left: -50px;
+  width: 40%;
+  height: 5%;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(270deg);
+  font-size: 14px;
+  letter-spacing: 4px;
+  font-weight: 300;
+
   @media (max-width: 375px) {
   }
 `;
 
 const StyledDeleteButton = styled.button`
+  position: absolute;
   border: none;
   border-radius: 20%;
-  width: 100px;
-  height: 40px;
+  left: 245px;
+  top: 135px;
+  width: 35px;
+  height: 35px;
   background-color: white;
+  z-index: 10;
   cursor: pointer;
 `;
 
@@ -167,6 +222,26 @@ const StyledDivPopUp = styled.div`
   @media (max-width: 375px) {
     width: 450px;
     height: 450px;
+  }
+`;
+
+const StyledBuyButton = styled.button`
+  background-color: #ffb201;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 25px 10px 25px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  color: white;
+  margin: 0 0 35px 35px;
+
+  svg {
+    margin-right: 5px;
+  }
+
+  &:hover {
+    background-color: #e5a200;
   }
 `;
 
