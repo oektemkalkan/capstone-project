@@ -33,6 +33,8 @@ export default function ShoppingCart() {
       <BackButton />
       {cartTickets && cartTickets.length > 0 ? (
         <>
+          <StyledHeaderP>TICKETS</StyledHeaderP>
+          <StyledHr />
           <StyledUl>
             {cartTickets.map((ticket) => (
               <StyledLi key={ticket.id}>
@@ -69,7 +71,7 @@ export default function ShoppingCart() {
               </StyledLi>
             ))}
           </StyledUl>
-          <StyledHr />
+          <StyledHr2 />
           <StyledBuyButton onClick={handleBuyTickets}>purchase</StyledBuyButton>
         </>
       ) : (
@@ -109,8 +111,8 @@ const StyledLi = styled.li`
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 40px;
-  margin-bottom: 50px;
+  margin-top: 0px;
+  margin-bottom: 40px;
   text-align: center;
   width: 300px;
   height: 160px;
@@ -278,11 +280,30 @@ const StyledImage = styled(Image)`
   }
 `;
 
-const StyledHr = styled.hr`
+const StyledHr2 = styled.hr`
   width: 180px;
   height: 0.5px;
   background-color: black;
   border: none;
-  margin: 0 0 15px 35px;
+  margin: 70px 0 15px 35px;
+  opacity: 0.2;
+`;
+
+const StyledHeaderP = styled.p`
+  font-size: 10px;
+  letter-spacing: 1px;
+  margin: 10px 0 0 0;
+  text-align: center;
+  opacity: 0.15;
+`;
+
+const StyledHr = styled.hr`
+  width: 200px;
+  height: 0.5px;
+  background-color: black;
+  border: none;
+  margin-top: 5px;
+  margin-left: auto;
+  margin-right: auto;
   opacity: 0.2;
 `;
