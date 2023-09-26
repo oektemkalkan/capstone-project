@@ -158,6 +158,10 @@ const StyledDiv = styled.div`
   @media (max-width: 390px) {
     margin: 0px 16% 5px 2%;
   }
+
+  @media (max-width: 430px) {
+    margin: 0px 16% 5px 2%;
+  }
 `;
 
 const StyledImageContainer = styled.div`
@@ -172,6 +176,11 @@ const StyledImageContainer = styled.div`
   @media (max-width: 390px) {
     width: 220px;
     margin: 15px 0 0 0;
+  }
+
+  @media (max-width: 430px) {
+    width: 240px;
+    margin: 20px 0 0 0;
   }
 `;
 
@@ -190,6 +199,11 @@ const StyledImage = styled(Image)`
   @media (max-width: 390px) {
     width: 480px;
     height: 300px;
+  }
+
+  @media (max-width: 430px) {
+    width: 500px;
+    height: 320px;
   }
 `;
 
@@ -212,6 +226,13 @@ const StyledReviewButton = styled.button`
     top: 40%;
     width: 220px;
     height: 160px;
+    letter-spacing: 15px;
+  }
+
+  @media (max-width: 430px) {
+    top: 40%;
+    width: 230px;
+    height: 170px;
     letter-spacing: 15px;
   }
 `;
@@ -238,6 +259,11 @@ const StyledArtistnameP = styled.p`
     padding: 15px 0 0 5px;
     font-size: 17px;
   }
+
+  @media (max-width: 430px) {
+    padding: 20px 0 0 5px;
+    font-size: 18px;
+  }
 `;
 
 const StyledSvg = styled.svg`
@@ -245,6 +271,10 @@ const StyledSvg = styled.svg`
 
   @media (max-width: 390px) {
     padding-top: 7px;
+  }
+
+  @media (max-width: 430px) {
+    padding-top: 8px;
   }
 `;
 
@@ -265,6 +295,11 @@ const StyledContainer2 = styled.div`
     margin: 75px 40px 35px 45px;
     padding: 0 0 30px 0;
   }
+
+  @media (max-width: 430px) {
+    margin: 95px 40px 35px 50px;
+    padding: 0 0 30px 0;
+  }
 `;
 
 const StyledInfo = styled.div`
@@ -277,6 +312,10 @@ const StyledInfo = styled.div`
 
   @media (max-width: 390px) {
     font-size: 16px;
+  }
+
+  @media (max-width: 430px) {
+    font-size: 17px;
   }
 `;
 
@@ -308,6 +347,12 @@ const StyledFromP = styled.p`
     top: 550px;
     font-size: 8px;
   }
+
+  @media (max-width: 430px) {
+    left: 300px;
+    top: 610px;
+    font-size: 8px;
+  }
 `;
 
 const StyledAddButton = styled.button`
@@ -325,6 +370,12 @@ const StyledAddButton = styled.button`
   @media (max-width: 390px) {
     width: 65px;
     height: 45px;
+    font-size: 15px;
+  }
+
+  @media (max-width: 430px) {
+    width: 70px;
+    height: 40px;
     font-size: 15px;
   }
 `;

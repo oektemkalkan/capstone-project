@@ -96,6 +96,10 @@ const StyledHeadDiv = styled.div`
   @media (max-width: 390px) {
     margin: 0px 16% 5px 2%;
   }
+
+  @media (max-width: 430px) {
+    margin: 0px 16% 5px 2%;
+  }
 `;
 
 const StyledRapLineDiv = styled.div`
@@ -125,6 +129,10 @@ const StyledRapP = styled.p`
   @media (max-width: 390px) {
     font-size: 11px;
   }
+
+  @media (max-width: 430px) {
+    font-size: 12px;
+  }
 `;
 
 const StyledHr = styled.hr`
@@ -142,6 +150,10 @@ const StyledHr = styled.hr`
   @media (max-width: 390px) {
     width: 220px;
   }
+
+  @media (max-width: 430px) {
+    width: 240px;
+  }
 `;
 
 const StyledHr2 = styled.hr`
@@ -154,6 +166,10 @@ const StyledHr2 = styled.hr`
   transform: rotate(120deg);
 
   @media (max-width: 390px) {
+    width: 85px;
+  }
+
+  @media (max-width: 430px) {
     width: 85px;
   }
 `;
@@ -177,6 +193,11 @@ const StyledLi = styled.li`
     width: 320px;
     margin-bottom: 20%;
   }
+
+  @media (max-width: 430px) {
+    width: 340px;
+    margin-bottom: 22%;
+  }
 `;
 
 const StyledImage = styled(Image)`
@@ -194,6 +215,11 @@ const StyledImage = styled(Image)`
 
   @media (max-width: 390px) {
     width: 320px;
+    height: 180px;
+  }
+
+  @media (max-width: 430px) {
+    width: 340px;
     height: 180px;
   }
 `;
@@ -227,6 +253,13 @@ const StyledRatingP = styled.p`
     height: 180px;
     padding: 5px 5px 0 10px;
   }
+
+  @media (max-width: 430px) {
+    letter-spacing: 10px;
+    padding: 5px 5px 0 20px;
+    height: 180px;
+    padding: 5px 5px 0 10px;
+  }
 `;
 
 const StyledStarSpan = styled.span`
@@ -250,6 +283,12 @@ const StyledArtistnameP = styled.p`
     font-size: 17px;
     letter-spacing: 8px;
   }
+
+  @media (max-width: 430px) {
+    padding: 15px 0 0 5px;
+    font-size: 18px;
+    letter-spacing: 8px;
+  }
 `;
 
 const StyledPriceP = styled.p`
@@ -267,6 +306,11 @@ const StyledPriceP = styled.p`
   @media (max-width: 390px) {
     padding: 10px 0 10px 5px;
     font-size: 15px;
+  }
+
+  @media (max-width: 430px) {
+    padding: 10px 0 10px 5px;
+    font-size: 17px;
   }
 `;
 

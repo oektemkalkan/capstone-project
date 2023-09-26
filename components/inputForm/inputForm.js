@@ -115,6 +115,12 @@ const StyledForm = styled.form`
     padding: 30px 20px 25px 20px;
     max-width: 335px;
   }
+
+  @media (max-width: 430px) {
+    margin-bottom: 40px;
+    padding: 35px 20px 25px 20px;
+    max-width: 370px;
+  }
 `;
 
 const StyledRow = styled.div`
@@ -133,6 +139,11 @@ const StyledLabel = styled.label`
     margin-bottom: 15px;
     font-size: 15px;
   }
+
+  @media (max-width: 430px) {
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
 `;
 
 const StyledInput = styled.input`
@@ -149,6 +160,10 @@ const StyledInput = styled.input`
 
   @media (max-width: 390px) {
     margin-bottom: 15px;
+  }
+
+  @media (max-width: 430px) {
+    margin-bottom: 20px;
   }
 `;
 
@@ -170,6 +185,12 @@ const StyledRateInput = styled.input`
     padding: 10px 25px 10px 25px;
     margin-bottom: 15px;
   }
+
+  @media (max-width: 430px) {
+    margin-left: 40px;
+    padding: 10px 35px 10px 35px;
+    margin-bottom: 20px;
+  }
 `;
 
 const StyledTextArea = styled.textarea`
@@ -189,6 +210,10 @@ const StyledTextArea = styled.textarea`
   }
 
   @media (max-width: 390px) {
+    margin-bottom: 30px;
+  }
+
+  @media (max-width: 430px) {
     margin-bottom: 30px;
   }
 `;
@@ -217,5 +242,10 @@ const StyledButton = styled.button`
   @media (max-width: 390px) {
     padding: 12px;
     font-size: 18px;
+  }
+
+  @media (max-width: 430px) {
+    padding: 14px;
+    font-size: 20px;
   }
 `;

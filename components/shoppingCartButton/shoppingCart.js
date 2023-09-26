@@ -42,4 +42,13 @@ const ShoppingCartDiv = styled.div`
       height: 27px;
     }
   }
+
+  @media (max-width: 430px) {
+    margin-left: 85%;
+    margin-bottum: 30px;
+    svg {
+      width: 27px;
+      height: 27px;
+    }
+  }
 `;

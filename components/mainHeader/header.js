@@ -24,4 +24,11 @@ const StyledHeader = styled.p`
     margin-bottom: 20px;
     letter-spacing: 2px;
   }
+
+  @media (max-width: 430px) {
+    font-size: 28px;
+    margin-top: 45px;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+  }
 `;

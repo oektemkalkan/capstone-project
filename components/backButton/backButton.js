@@ -55,4 +55,13 @@ const StyledButton = styled.button`
       height: 27px;
     }
   }
+
+  @media (max-width: 430px) {
+    margin-left: 4%;
+
+    svg {
+      width: 27px;
+      height: 27px;
+    }
+  }
 `;

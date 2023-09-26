@@ -120,6 +120,10 @@ const StyledLi = styled.li`
   @media (max-width: 390px) {
     margin-bottom: 30px;
   }
+
+  @media (max-width: 430px) {
+    margin-bottom: 30px;
+  }
 `;
 
 const StyledImageCard = styled(Image)`
@@ -223,6 +227,12 @@ const StyledDivPopUp = styled.div`
     width: 450px;
     height: 450px;
   }
+
+  @media (max-width: 430px) {
+    top: 50%;
+    width: 450px;
+    height: 450px;
+  }
 `;
 
 const StyledBuyButton = styled.button`
@@ -249,8 +259,13 @@ const StyledBuyButton = styled.button`
   }
 
   @media (max-width: 390px) {
-    margin: 0 0 35px 45px;
+    margin: 0 0 35px 40px;
     font-size: 17px;
+  }
+
+  @media (max-width: 430px) {
+    margin: 0 0 35px 45px;
+    font-size: 18px;
   }
 `;
 
@@ -280,6 +295,12 @@ const StyledP = styled.p`
     font-size: 16px;
     letter-spacing: 8px;
   }
+
+  @media (max-width: 430px) {
+    top: 100px;
+    font-size: 18px;
+    letter-spacing: 9px;
+  }
 `;
 
 const StyledImage = styled(Image)`
@@ -294,6 +315,11 @@ const StyledImage = styled(Image)`
   @media (max-width: 390px) {
     width: 85%;
     height: 640px;
+  }
+
+  @media (max-width: 430px) {
+    width: 85%;
+    height: 700px;
   }
 `;
 
@@ -310,7 +336,11 @@ const StyledHr2 = styled.hr`
   }
 
   @media (max-width: 390px) {
-    margin: 80px 0 15px 45px;
+    margin: 80px 0 15px 40px;
+  }
+
+  @media (max-width: 430px) {
+    margin: 90px 0 15px 45px;
   }
 `;
 
