@@ -117,7 +117,8 @@ const StyledLi = styled.li`
   width: 300px;
   height: 160px;
 
-  @media (max-width: 375px) {
+  @media (max-width: 390px) {
+    margin-bottom: 30px;
   }
 `;
 
@@ -127,8 +128,6 @@ const StyledImageCard = styled(Image)`
   object-fit: cover;
   opacity: 0.2;
   z-index: 20;
-  @media (max-width: 375px) {
-  }
 `;
 
 const StyledImageDiv = styled.div`
@@ -144,8 +143,6 @@ const StyledImageDiv = styled.div`
   background-color: white;
   margin: 0 auto;
   opacity: 1;
-  @media (max-width: 375px) {
-  }
 `;
 
 const StyledTicketInfoDiv = styled.div`
@@ -155,8 +152,6 @@ const StyledTicketInfoDiv = styled.div`
   transform: translate(-50%, -50%);
   z-index: 2;
   padding: 10px;
-  @media (max-width: 375px) {
-  }
 `;
 
 const StyledLocationP = styled.p`
@@ -195,9 +190,6 @@ const StyledNameP = styled.p`
   font-size: 14px;
   letter-spacing: 4px;
   font-weight: 300;
-
-  @media (max-width: 375px) {
-  }
 `;
 
 const StyledDeleteButton = styled.button`
@@ -226,6 +218,12 @@ const StyledDivPopUp = styled.div`
     width: 450px;
     height: 450px;
   }
+
+  @media (max-width: 390px) {
+    top: 50%;
+    width: 450px;
+    height: 500px;
+  }
 `;
 
 const StyledBuyButton = styled.button`
@@ -237,7 +235,7 @@ const StyledBuyButton = styled.button`
   font-size: 16px;
   transition: background-color 0.3s;
   color: white;
-  margin: 0 0 35px 35px;
+  margin: 0 0 55px 30%;
 
   svg {
     margin-right: 5px;
@@ -245,6 +243,15 @@ const StyledBuyButton = styled.button`
 
   &:hover {
     background-color: #e5a200;
+  }
+
+  @media (max-width: 375px) {
+    margin: 0 0 35px 35px;
+  }
+
+  @media (max-width: 390px) {
+    margin: 0 0 35px 45px;
+    font-size: 17px;
   }
 `;
 
@@ -268,6 +275,12 @@ const StyledP = styled.p`
     font-size: 12.5px;
     letter-spacing: 7px;
   }
+
+  @media (max-width: 390px) {
+    top: 90px;
+    font-size: 16px;
+    letter-spacing: 8px;
+  }
 `;
 
 const StyledImage = styled(Image)`
@@ -278,6 +291,11 @@ const StyledImage = styled(Image)`
     width: 85%;
     height: 550px;
   }
+
+  @media (max-width: 390px) {
+    width: 85%;
+    height: 640px;
+  }
 `;
 
 const StyledHr2 = styled.hr`
@@ -285,8 +303,16 @@ const StyledHr2 = styled.hr`
   height: 0.5px;
   background-color: black;
   border: none;
-  margin: 70px 0 15px 35px;
+  margin: 100px 0 15px 30%;
   opacity: 0.2;
+
+  @media (max-width: 375px) {
+    margin: 70px 0 15px 35px;
+  }
+
+  @media (max-width: 390px) {
+    margin: 80px 0 15px 45px;
+  }
 `;
 
 const StyledHeaderP = styled.p`

@@ -39,7 +39,7 @@ export default function RapPage() {
         <StyledHr />
       </StyledRapLineDiv>
       <div>
-        <ul>
+        <StyledUl>
           {data.map((rapstars) => (
             <StyledLi key={rapstars._id}>
               <StyledImage
@@ -64,7 +64,7 @@ export default function RapPage() {
                   color: "#139df4",
                   position: "relative",
                   bottom: "10px",
-                  left: "200px",
+                  left: "215px",
                   fontSize: "15px",
                   fontWeight: "bold",
                 }}
@@ -73,7 +73,7 @@ export default function RapPage() {
               </StyledLink>
             </StyledLi>
           ))}
-        </ul>
+        </StyledUl>
       </div>
     </>
   );
@@ -92,6 +92,10 @@ const StyledHeadDiv = styled.div`
   @media (max-width: 375px) {
     margin: 0px 16% 0px 2%;
   }
+
+  @media (max-width: 390px) {
+    margin: 0px 16% 5px 2%;
+  }
 `;
 
 const StyledRapLineDiv = styled.div`
@@ -103,20 +107,41 @@ const StyledRapLineDiv = styled.div`
   border-radius: 50px;
 `;
 
+const StyledUl = styled.ul`
+  margin: 0;
+  padding: 0;
+`;
+
 const StyledRapP = styled.p`
-  font-size: 10px;
+  font-size: 15px;
   letter-spacing: 1px;
   margin-bottom: 5px;
   opacity: 0.15;
+
+  @media (max-width: 375px) {
+    font-size: 10px;
+  }
+
+  @media (max-width: 390px) {
+    font-size: 11px;
+  }
 `;
 
 const StyledHr = styled.hr`
-  width: 200px;
+  width: 30%;
   height: 0.5px;
   background-color: black;
   border: none;
-  margin: 0;
+  margin: 0 0 10px 0;
   opacity: 0.2;
+
+  @media (max-width: 375px) {
+    width: 200px;
+  }
+
+  @media (max-width: 390px) {
+    width: 220px;
+  }
 `;
 
 const StyledHr2 = styled.hr`
@@ -127,12 +152,18 @@ const StyledHr2 = styled.hr`
   margin: 10px 0 0 30px;
   opacity: 0.2;
   transform: rotate(120deg);
+
+  @media (max-width: 390px) {
+    width: 85px;
+  }
 `;
 
 const StyledLi = styled.li`
   position: relative;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 5%;
-  width: 80%;
+  width: 600px;
   box-shadow: 10px 15px 20px rgba(128, 128, 128, 0.1);
   border-radius: 0 0 10px 0;
   list-style-type: none;
@@ -141,15 +172,28 @@ const StyledLi = styled.li`
     width: 300px;
     margin-bottom: 15%;
   }
+
+  @media (max-width: 390px) {
+    width: 320px;
+    margin-bottom: 20%;
+  }
 `;
 
 const StyledImage = styled(Image)`
   position: relative;
+  width: 600px;
+  height: 350px;
   border-radius: 10px 0 0 0;
   box-shadow: -5px 0px 30px rgba(0, 0, 0, 0.6);
   z-index: -1;
+
   @media (max-width: 375px) {
     width: 300px;
+    height: 180px;
+  }
+
+  @media (max-width: 390px) {
+    width: 320px;
     height: 180px;
   }
 `;
@@ -160,15 +204,29 @@ const StyledRatingP = styled.p`
   writing-mode: vertical-rl;
   text-orientation: mixed;
   transform: rotate(180deg);
-  letter-spacing: 10px;
+  letter-spacing: 12px;
   left: -16px;
   top: 0px;
   opacity: 0.8;
   background-color: rgba(0, 0, 0, 0.35);
   border-radius: 0 0 10px 0;
-  padding: 5px 5px 0 10px;
-  height: 170px;
+  padding: 10px 5px 0 20px;
+  height: 350px;
   box-shadow: -15px 0px 20px rgba(0, 0, 0, 0.8);
+
+  @media (max-width: 375px) {
+    letter-spacing: 10px;
+    padding: 5px 5px 0 20px;
+    height: 170px;
+    padding: 5px 5px 0 10px;
+  }
+
+  @media (max-width: 390px) {
+    letter-spacing: 10px;
+    padding: 5px 5px 0 20px;
+    height: 180px;
+    padding: 5px 5px 0 10px;
+  }
 `;
 
 const StyledStarSpan = styled.span`
@@ -177,17 +235,39 @@ const StyledStarSpan = styled.span`
 
 const StyledArtistnameP = styled.p`
   margin: 0;
-  padding: 5px 0 0 5px;
-  font-size: 15px;
+  padding: 10px 0 0 10px;
+  font-size: 20px;
   letter-spacing: 8px;
+
+  @media (max-width: 375px) {
+    padding: 5px 0 0 5px;
+    font-size: 15px;
+    letter-spacing: 8px;
+  }
+
+  @media (max-width: 390px) {
+    padding: 10px 0 0 5px;
+    font-size: 17px;
+    letter-spacing: 8px;
+  }
 `;
 
 const StyledPriceP = styled.p`
   margin: 0;
-  padding: 20px 0 10px 5px;
-  font-size: 13px;
+  padding: 20px 0 10px 10px;
+  font-size: 18px;
   letter-spacing: 3px;
   font-weight: bolder;
+
+  @media (max-width: 375px) {
+    padding: 20px 0 10px 5px;
+    font-size: 13px;
+  }
+
+  @media (max-width: 390px) {
+    padding: 10px 0 10px 5px;
+    font-size: 15px;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -195,7 +275,6 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   color: #139df4;
   bottom: 10px;
-  left: 200px;
   font-size: 15px;
   font-weight: bold;
 `;

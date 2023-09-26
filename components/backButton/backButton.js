@@ -46,4 +46,13 @@ const StyledButton = styled.button`
       height: 25px;
     }
   }
+
+  @media (max-width: 390px) {
+    margin-left: 4%;
+
+    svg {
+      width: 27px;
+      height: 27px;
+    }
+  }
 `;

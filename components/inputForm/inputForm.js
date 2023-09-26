@@ -109,6 +109,12 @@ const StyledForm = styled.form`
   border-right: 0.5px dotted #ccc;
   padding: 25px 20px 25px 20px;
   margin-bottom: 30px;
+
+  @media (max-width: 390px) {
+    margin-bottom: 35px;
+    padding: 30px 20px 25px 20px;
+    max-width: 335px;
+  }
 `;
 
 const StyledRow = styled.div`
@@ -122,6 +128,11 @@ const StyledLabel = styled.label`
   border-bottom: 0.5px solid #000;
   width: 25%;
   padding-bottom: 2px;
+
+  @media (max-width: 390px) {
+    margin-bottom: 15px;
+    font-size: 15px;
+  }
 `;
 
 const StyledInput = styled.input`
@@ -134,6 +145,10 @@ const StyledInput = styled.input`
   &::placeholder {
     font-size: 14px;
     font-family: Verdana;
+  }
+
+  @media (max-width: 390px) {
+    margin-bottom: 15px;
   }
 `;
 
@@ -148,6 +163,12 @@ const StyledRateInput = styled.input`
   &::placeholder {
     font-size: 9px;
     font-family: Verdana;
+  }
+
+  @media (max-width: 390px) {
+    margin-left: 20px;
+    padding: 10px 35px 10px 35px;
+    margin-bottom: 15px;
   }
 `;
 
@@ -165,6 +186,10 @@ const StyledTextArea = styled.textarea`
   &::placeholder {
     font-size: 14px;
     font-family: Verdana;
+  }
+
+  @media (max-width: 390px) {
+    margin-bottom: 30px;
   }
 `;
 
@@ -187,5 +212,10 @@ const StyledButton = styled.button`
 
   &:hover {
     background-color: #e5a200;
+  }
+
+  @media (max-width: 390px) {
+    padding: 12px;
+    font-size: 18px;
   }
 `;

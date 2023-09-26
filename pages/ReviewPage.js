@@ -72,12 +72,23 @@ const StyledHr = styled.hr`
   margin-left: auto;
   margin-right: auto;
   opacity: 0.2;
+
+  @media (max-width: 390px) {
+    width: 220px;
+  }
 `;
 
 const ReviewPageContainer = styled.div`
-  max-width: 375px;
-  margin-top: 10px;
+  margin: 20px 20% 0 20%;
   text-align: center;
+
+  @media (max-width: 375px) {
+    margin: 10px 0 0 0;
+  }
+
+  @media (max-width: 390px) {
+    margin: 15px 0 0 0;
+  }
 `;
 
 const ReviewContainer = styled.div`
@@ -108,6 +119,10 @@ const StyledNoMessageP = styled.p`
 const StyledNameP = styled.p`
   font-size: 15px;
   letter-spacing: 2px;
+
+  @media (max-width: 390px) {
+    font-size: 18px;
+  }
 `;
 
 const StyledSpan = styled.span`
@@ -126,6 +141,11 @@ const StyledOpinionP = styled.p`
   margin: 15px 0 0 0;
   word-wrap: break-word;
   max-width: 200px;
+
+  @media (max-width: 390px) {
+    max-width: 210px;
+    font-size: 15px;
+  }
 `;
 
 const StyledDeleteButton = styled.button`
@@ -144,5 +164,9 @@ const StyledDeleteButton = styled.button`
 
   &:hover {
     background-color: #d63200;
+  }
+
+  @media (max-width: 390px) {
+    font-size: 12px;
   }
 `;

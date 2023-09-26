@@ -154,6 +154,10 @@ const StyledDiv = styled.div`
   @media (max-width: 375px) {
     margin: 0px 16% 0px 2%;
   }
+
+  @media (max-width: 390px) {
+    margin: 0px 16% 5px 2%;
+  }
 `;
 
 const StyledImageContainer = styled.div`
@@ -164,6 +168,11 @@ const StyledImageContainer = styled.div`
   height: auto;
   overflow: hidden;
   margin: 0;
+
+  @media (max-width: 390px) {
+    width: 220px;
+    margin: 15px 0 0 0;
+  }
 `;
 
 const StyledImage = styled(Image)`
@@ -172,9 +181,15 @@ const StyledImage = styled(Image)`
   box-shadow: -5px 0px 30px rgba(0, 0, 0, 0.2);
   right: 90px;
   z-index: -1;
+
   @media (max-width: 375px) {
     width: 450px;
     height: 280px;
+  }
+
+  @media (max-width: 390px) {
+    width: 480px;
+    height: 300px;
   }
 `;
 
@@ -192,6 +207,13 @@ const StyledReviewButton = styled.button`
   width: 200px;
   height: 150px;
   box-shadow: 5px 0px 50px rgba(0, 0, 0, 0.4);
+
+  @media (max-width: 390px) {
+    top: 36%;
+    width: 260px;
+    height: 180px;
+    letter-spacing: 15px;
+  }
 `;
 
 const StyledStarSpan = styled.span`
@@ -211,19 +233,38 @@ const StyledArtistnameP = styled.p`
   font-size: 15px;
   letter-spacing: 8px;
   text-align: center;
+
+  @media (max-width: 390px) {
+    padding: 15px 0 0 5px;
+    font-size: 17px;
+  }
 `;
 
 const StyledSvg = styled.svg`
   padding-top: 5px;
+
+  @media (max-width: 390px) {
+    padding-top: 7px;
+  }
 `;
 
 const StyledContainer2 = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin: 50px 40px 35px 40px;
+  margin: 80px 15% 55px 15%;
   padding: 0 0 25px 0;
   border-bottom: 0.1px dotted black;
+
+  @media (max-width: 375px) {
+    margin: 50px 40px 35px 40px;
+    padding: 0 0 25px 0;
+  }
+
+  @media (max-width: 390px) {
+    margin: 75px 40px 35px 45px;
+    padding: 0 0 30px 0;
+  }
 `;
 
 const StyledInfo = styled.div`
@@ -233,6 +274,10 @@ const StyledInfo = styled.div`
   letter-spacing: 1px;
   font-size: 15px;
   font-weight: 400;
+
+  @media (max-width: 390px) {
+    font-size: 16px;
+  }
 `;
 
 const StyledLocationP = styled.p`
@@ -247,10 +292,22 @@ const StyledDateP = styled.p`
 
 const StyledFromP = styled.p`
   position: absolute;
-  left: 260px;
-  top: 465px;
-  font-size: 8px;
+  left: 78%;
+  top: 550px;
+  font-size: 10px;
   font-weight: 200;
+
+  @media (max-width: 375px) {
+    left: 260px;
+    top: 465px;
+    font-size: 8px;
+  }
+
+  @media (max-width: 390px) {
+    left: 270px;
+    top: 550px;
+    font-size: 8px;
+  }
 `;
 
 const StyledAddButton = styled.button`
@@ -265,4 +322,10 @@ const StyledAddButton = styled.button`
   justify-content: center;
   cursor: pointer;
   font-size: 14px;
+
+  @media (max-width: 390px) {
+    width: 65px;
+    height: 45px;
+    font-size: 15px;
+  }
 `;

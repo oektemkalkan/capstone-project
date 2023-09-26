@@ -77,6 +77,10 @@ const StyledNav = styled.nav`
   @media (max-width: 375px) {
     font-size: 1rem;
   }
+
+  @media (max-width: 390px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const StyledP = styled.p`
@@ -96,6 +100,13 @@ const StyledP = styled.p`
     font-size: 10px;
     letter-spacing: 1.5px;
   }
+
+  @media (max-width: 390px) {
+    top: 60px;
+    left: 50%;
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
 `;
 
 const AnimatedGifDiv = styled.div`
@@ -109,6 +120,11 @@ const AnimatedGifDiv = styled.div`
     margin-top: 0px;
     width: 300px;
     box-shadow: rgba(0, 0, 0, 0.45) 0px 5px 10px -10px;
+  }
+
+  @media (max-width: 390px) {
+    margin-top: 10px;
+    width: 320px;
   }
 `;
 
@@ -133,6 +149,12 @@ const RapContainerDiv = styled.div`
     padding: 30px;
     border-radius: 5px 25px 5px 25px;
   }
+
+  @media (max-width: 390px) {
+    margin: 80px 8% 20px 8%;
+    padding: 35px;
+    border-radius: 5px 25px 5px 25px;
+  }
 `;
 
 const PopContainerDiv = styled.div`
@@ -146,6 +168,12 @@ const PopContainerDiv = styled.div`
   @media (max-width: 375px) {
     margin: 0px 10% 30px 10%;
     padding: 30px;
+    border-radius: 5px 25px 5px 25px;
+  }
+
+  @media (max-width: 390px) {
+    margin: 0px 8% 35px 8%;
+    padding: 35px;
     border-radius: 5px 25px 5px 25px;
   }
 `;
@@ -174,6 +202,10 @@ const StyledImagePop = styled(Image)`
   z-index: -10;
 
   @media (max-width: 375px) {
+    top: -450px;
+  }
+
+  @media (max-width: 390px) {
     top: -450px;
   }
 `;
