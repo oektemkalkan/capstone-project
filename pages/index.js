@@ -9,6 +9,7 @@ import gifdata from "../public/animation-Gif.json";
 import Image from "next/image";
 import RapImage from "../public/rap.jpg";
 import PopImage from "../public/pop.jpg";
+import RockImage from "../public/rock.jpg";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -65,6 +66,22 @@ export default function Home() {
             POP
           </Link>
         </PopContainerDiv>
+        <br />
+        <RockContainerDiv>
+          <StyledImageRock src={RockImage} alt="Rock Artist" priority={true} />
+          <Link
+            href={"/RockPage"}
+            style={{
+              textDecoration: "none",
+              color: "white",
+              zIndex: "1",
+              letterSpacing: 18,
+              fontWeight: "bolder",
+            }}
+          >
+            ROCK
+          </Link>
+        </RockContainerDiv>
       </StyledNav>
     </>
   );
@@ -181,7 +198,34 @@ const RapContainerDiv = styled.div`
 
 const PopContainerDiv = styled.div`
   padding: 40px;
-  margin: 10px 18% 40px 18%;
+  margin: 10px 18% 25px 18%;
+  border-radius: 5px 30px 5px 30px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px 0px;
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: 375px) {
+    margin: 0px 10% 15px 10%;
+    padding: 30px;
+    border-radius: 5px 25px 5px 25px;
+  }
+
+  @media (max-width: 390px) {
+    margin: 0px 8% 20px 8%;
+    padding: 35px;
+    border-radius: 5px 25px 5px 25px;
+  }
+
+  @media (max-width: 430px) {
+    margin: 0px 9% 30px 9%;
+    padding: 35px;
+    border-radius: 5px 25px 5px 25px;
+  }
+`;
+
+const RockContainerDiv = styled.div`
+  padding: 40px;
+  margin: 10px 18% 60px 18%;
   border-radius: 5px 30px 5px 30px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px 0px;
   position: relative;
@@ -239,5 +283,29 @@ const StyledImagePop = styled(Image)`
 
   @media (max-width: 430px) {
     top: -450px;
+  }
+`;
+
+const StyledImageRock = styled(Image)`
+  position: absolute;
+  top: -520px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  height: 800px;
+  object-fit: cover;
+  opacity: 0.9;
+  z-index: -10;
+
+  @media (max-width: 375px) {
+    top: -550px;
+  }
+
+  @media (max-width: 390px) {
+    top: -550px;
+  }
+
+  @media (max-width: 430px) {
+    top: -550px;
   }
 `;

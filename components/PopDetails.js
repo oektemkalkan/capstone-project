@@ -230,7 +230,7 @@ const StyledReviewButton = styled.button`
   }
 
   @media (max-width: 430px) {
-    top: 40%;
+    top: 37%;
     width: 230px;
     height: 170px;
     letter-spacing: 15px;

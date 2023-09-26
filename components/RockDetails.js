@@ -12,13 +12,13 @@ import gifloading from "../public/animation_loading.json";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-export default function RapDetails() {
+export default function RockDetails() {
   const router = useRouter();
   const { id } = router.query;
 
   const [cartTickets, setCartTickets] = useLocalStorageState("cartTicket", []);
   const [reviews, setReviews] = useLocalStorageState("review", []);
-  const { data, error } = useSWR(id ? `/api/rapstars/${id}` : null, fetcher);
+  const { data, error } = useSWR(id ? `/api/rockstars/${id}` : null, fetcher);
 
   if (!id) {
     return <h1>No ID!</h1>;
