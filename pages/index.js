@@ -172,7 +172,7 @@ const PopContainerDiv = styled.div`
   }
 
   @media (max-width: 390px) {
-    margin: 0px 8% 35px 8%;
+    margin: 0px 8% 40px 8%;
     padding: 35px;
     border-radius: 5px 25px 5px 25px;
   }

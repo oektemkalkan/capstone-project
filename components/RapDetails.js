@@ -209,9 +209,9 @@ const StyledReviewButton = styled.button`
   box-shadow: 5px 0px 50px rgba(0, 0, 0, 0.4);
 
   @media (max-width: 390px) {
-    top: 36%;
-    width: 260px;
-    height: 180px;
+    top: 40%;
+    width: 220px;
+    height: 160px;
     letter-spacing: 15px;
   }
 `;

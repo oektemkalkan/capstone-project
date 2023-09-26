@@ -220,9 +220,8 @@ const StyledDivPopUp = styled.div`
   }
 
   @media (max-width: 390px) {
-    top: 50%;
     width: 450px;
-    height: 500px;
+    height: 450px;
   }
 `;
 

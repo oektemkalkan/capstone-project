@@ -166,8 +166,8 @@ const StyledRateInput = styled.input`
   }
 
   @media (max-width: 390px) {
-    margin-left: 20px;
-    padding: 10px 35px 10px 35px;
+    margin-left: 35px;
+    padding: 10px 25px 10px 25px;
     margin-bottom: 15px;
   }
 `;
